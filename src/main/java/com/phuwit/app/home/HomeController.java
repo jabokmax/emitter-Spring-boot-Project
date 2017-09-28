@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 
 public class HomeController {
-
-    public ModelAndView home(ModelAndView modelAndView){
+    @RequestMapping("/")
+    public ModelAndView home(ModelAndView modelAndView) {
 
         modelAndView.setViewName("home/home");
         return modelAndView;
