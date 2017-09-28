@@ -31,3 +31,9 @@ spring:
     mode: LEGACYHTML5
     cache: false
     encoding: UTF-8
+security:
+  basic:
+    enabled: false
+
+
+
