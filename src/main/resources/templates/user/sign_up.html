@@ -10,20 +10,31 @@
 <body>
 <div layout:fragment="content" th:remove="tag">
     <!-- StaticPages home.html inserted into main.html -->
-    <div th:if="${isLogin}" class="row">
-        You have logged in
-    </div>
-
-    <div th:unless="${isLogin}" class="center jumbotron">
-        <h1>Welcome to Emitter Application</h1>
-        <h2>
-            <a href="http://arms-asia.com/en/">ARMS Thailand</a> presents, How to
-            create SNS Application.
-        </h2>
-        <a href="/user/signUp" class="btn btn-lg btn-primary"> <span
-                class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up
-            now!
-        </a>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h3 class="center">Sign up</h3>
+            <form>
+                <div class="form-group">
+                    <label for="InputName">Name</label>
+                    <input type="email" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword1">Password</label>
+                    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="InputPassword2">Confirm Password</label>
+                    <input type="password" class="form-control" id="InputPassword2" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
     </div>
     <!-- StaticPages home.html inserted into main.html End -->
 </div>
