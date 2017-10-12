@@ -14,28 +14,102 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <h3 class="center">Sign up</h3>
-            <form>
+            <form id="signUpForm" th:action="@{create}" th:object="${signUpForm}" method="POST"
+                  accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="InputName">Name</label>
-                    <input type="email" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
+                    <input th:field="*{name}" class="form-control" id="InputName" aria-describedby="emailHelp" placeholder="Name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="InputEmail">Email address</label>
+                    <input th:field="*{email}" type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label for="InputPassword1">Password</label>
-                    <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+                    <input th:field="*{password}" type="password" class="form-control" id="InputPassword1" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <label for="InputPassword2">Confirm Password</label>
                     <input type="password" class="form-control" id="InputPassword2" placeholder="Confirm Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a id="submit" class="btn btn-info">Sign Up</a>
             </form>
         </div>
         <div class="col-md-2"></div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Can't Sign up</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="error">Error</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END Content -->
+    <script type="text/javascript">
+
+
+
+        $(document).ready(
+            function() {
+
+                $('#submit').on(
+                    'click',
+                    function() {
+                        //if($('#InputName').val() != "")
+                        //    $('#signUpForm').submit();
+                        //else
+                        //    $('#Modal1').modal('show');
+
+                        var error = [];
+                        error = [];
+
+
+                        if ($('#InputName').val() == ""){
+                            error.push("Please fill a Name.")
+                        }
+                        if ($('#InputEmail').val() == ""){
+                            error.push("Please fill a Email.")
+                        }
+                        if ($('#InputPassword1').val() == ""){
+                            error.push("Please fill a Password.")
+                        }
+                        if ($('#InputPassword1').val() != $('#InputPassword2').val()){
+                            error.push("Password not match.")
+                        }
+
+
+                        if(error.length == 0){
+                            $('#signUpForm').submit();
+                        } else {
+                            console.log("Error !")
+
+                            for (var i in error){
+                                console.log(error[i])
+                            }
+
+
+                        }
+
+
+
+                    });
+
+            });
+    </script>
     <!-- StaticPages home.html inserted into main.html End -->
 </div>
 </body>

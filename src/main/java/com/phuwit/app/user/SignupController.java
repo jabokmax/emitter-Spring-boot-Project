@@ -23,7 +23,7 @@ public class SignupController {
     }
 
     //　ユーザーを作成する
-    @RequestMapping(value = "create", params = "form", method = RequestMethod.POST)
+    @RequestMapping(value = "user/create", method = RequestMethod.POST)
     public String create(@ModelAttribute SignupForm signupForm) {
 
         userService.save(signupForm);
