@@ -3,6 +3,7 @@ package com.phuwit.domain.entity;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class User {
     private String name;
 
     @NotEmpty
+    @Column(unique=true)
     private String email;
 
     @NotEmpty

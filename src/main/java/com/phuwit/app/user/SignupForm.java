@@ -1,21 +1,16 @@
 package com.phuwit.app.user;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Data
 public class SignupForm {
-    private int id;
+
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String password;
-
-    public SignupForm(int id, String email, String name, String password) {
-        this.email = email;
-        this.name = name;
-        this.id = id;
-        this.password = password;
-    }
-
-    public SignupForm(){}
 
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.NoSuchAlgorithmException;
+
 @Controller
 public class SignupController {
 
@@ -24,10 +26,31 @@ public class SignupController {
 
     //　ユーザーを作成する
     @RequestMapping(value = "user/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute SignupForm signupForm) {
-
-        userService.save(signupForm);
-        return "redirect:/";
+    public String create(@ModelAttribute SignupForm signupForm) throws NoSuchAlgorithmException {
+        userService.AddUser(signupForm);
+        return "redirect:/user/login";
     }
+
+    @RequestMapping(value = "user/test")
+    public String test(){
+        return "user/test";
+    }
+
+    //   For Advance Validation
+    /* -------------------------------------------------------------------------------------------------------------
+
+    @RequestMapping("/user/add")
+    public Object add(@ModelAttribute("userAddForm") @Valid UserAddForm userAddForm, BindingResult bindingResult,
+                      RedirectAttributes attributes, ModelAndView modelAndView) throws NoSuchAlgorithmException {
+
+        if(bindingResult.hasErrors()) {
+            return "user/sign_up";
+        }
+        userService.createUser(userAddForm);
+        attributes.addFlashAttribute("messageDialog", "User was created.");
+        return "redirect:/user/login";
+    }
+
+     ------------------------------------------------------------------------------------------------------------- */
 
 }
